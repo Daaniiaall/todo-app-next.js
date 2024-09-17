@@ -3,15 +3,17 @@ import { verifyPassword } from "@/utils/auth"
 import connectDB from "@/utils/connectDB"
 
 import NextAuth  from "next-auth"
-import CredentialsProvider from "next-auth/providers/credentials"
+import CredentialsProvider from "next-auth/providers/credentials";
 
 const authOptions = {
-    session: {strategy: "jwt"} ,
+    session: { strategy: "jwt" },
     providers: [ CredentialsProvider({
 
         async authorize(credentials , req) {
 
             const {email , password} = credentials
+            console.log({email , password})
+
 
             try {
                 await connectDB()
@@ -27,6 +29,8 @@ const authOptions = {
 
             const isValid = await verifyPassword(password , user.password)
             if(!isValid) {throw new Error("username or password is incorrect")}
+
+            console.log("logined")
 
             return {email}
         }
