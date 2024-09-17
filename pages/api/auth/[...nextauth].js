@@ -2,7 +2,7 @@ import User from "@/models/User"
 import { verifyPassword } from "@/utils/auth"
 import connectDB from "@/utils/connectDB"
 
-import nextAuth from "next-auth"
+import NextAuth  from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 
 const authOptions = {
@@ -33,4 +33,4 @@ const authOptions = {
     })],
 }
 
-export default nextAuth(authOptions)
+export default NextAuth (authOptions)

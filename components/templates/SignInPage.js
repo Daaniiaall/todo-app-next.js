@@ -38,7 +38,7 @@ function SignInPage() {
         type="text"
         placeholder="Email"
         value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={(e) => setEmail(e.target.value.trim())}
       />
 
       <input
